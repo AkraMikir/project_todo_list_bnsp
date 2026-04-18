@@ -23,7 +23,7 @@ class CategorySeeder extends Seeder
             ['name' => 'Work', 'icon' => '💼', 'color' => '#FF9680'],
             ['name' => 'Sport', 'icon' => '⚽', 'color' => '#80FFFF'],
             ['name' => 'Design', 'icon' => '🎨', 'color' => '#80FFA3'],
-            ['name' => 'University', 'icon' => '🎓', 'color' => '#809CFF'],
+            ['name' => 'Study', 'icon' => '🎓', 'color' => '#809CFF'],
             ['name' => 'Social', 'icon' => '👥', 'color' => '#FF80EB'],
             ['name' => 'Music', 'icon' => '🎵', 'color' => '#FC80FF'],
             ['name' => 'Health', 'icon' => '❤️', 'color' => '#80FFA3'],

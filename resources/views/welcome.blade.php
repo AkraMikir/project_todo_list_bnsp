@@ -29,8 +29,7 @@
             <!-- Step 1 Content -->
             <div x-show="step === 1" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" class="absolute inset-0 flex flex-col items-center justify-start text-center mt-4 w-full" x-cloak>
                 <div class="h-64 md:h-80 w-full mb-10 flex items-center justify-center text-uptodo-purple relative">
-                    <!-- Placeholder Illustration 1 -->
-                    <svg viewBox="0 0 200 200" class="w-64 h-64 md:w-80 md:h-80"><rect x="25" y="50" width="150" height="100" rx="10" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="30" fill="currentColor"/><path d="M70 100 L130 100 M100 70 L100 130" stroke="white" stroke-width="5" stroke-linecap="round"/></svg>
+                    <img src="{{ asset('images/time1.png') }}" alt="Kelola tugas" class="w-64 h-64 md:w-80 md:h-80 object-contain" />
                 </div>
                 <div class="flex gap-3 mb-10 items-center justify-center">
                     <div class="w-6 h-1 bg-white rounded-full"></div>
@@ -44,8 +43,7 @@
             <!-- Step 2 Content -->
             <div x-show="step === 2" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" class="absolute inset-0 flex flex-col items-center justify-start text-center mt-4 w-full" x-cloak>
                 <div class="h-64 md:h-80 w-full mb-10 flex items-center justify-center text-uptodo-purple relative">
-                    <!-- Placeholder Illustration 2 -->
-                    <svg viewBox="0 0 200 200" class="w-64 h-64 md:w-80 md:h-80"><circle cx="100" cy="100" r="70" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="3"/><path d="M100 50 L100 100 L130 130" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <img src="{{ asset('images/time2.png') }}" alt="Buat rutinitas" class="w-64 h-64 md:w-80 md:h-80 object-contain" />
                 </div>
                 <div class="flex gap-3 mb-10 items-center justify-center">
                     <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
@@ -59,8 +57,7 @@
             <!-- Step 3 Content -->
             <div x-show="step === 3" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-8" x-transition:enter-end="opacity-100 translate-x-0" class="absolute inset-0 flex flex-col items-center justify-start text-center mt-4 w-full" x-cloak>
                 <div class="h-64 md:h-80 w-full mb-10 flex items-center justify-center text-uptodo-purple relative">
-                    <!-- Placeholder Illustration 3 -->
-                    <svg viewBox="0 0 200 200" class="w-64 h-64 md:w-80 md:h-80"><rect x="40" y="40" width="120" height="120" rx="10" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="3"/><path d="M60 80 L140 80 M60 120 L140 120 M80 60 L80 140 M120 60 L120 140" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+                    <img src="{{ asset('images/time3.png') }}" alt="Atur tugas" class="w-64 h-64 md:w-80 md:h-80 object-contain" />
                 </div>
                 <div class="flex gap-3 mb-10 items-center justify-center">
                     <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
