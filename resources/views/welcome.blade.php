@@ -33,11 +33,11 @@
                 </div>
                 <div class="flex gap-3 mb-10 items-center justify-center">
                     <div class="w-6 h-1 bg-white rounded-full"></div>
-                    <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
-                    <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
+                    <div class="w-6 h-1 bg-uptodo-muted rounded-full"></div>
+                    <div class="w-6 h-1 bg-uptodo-muted rounded-full"></div>
                 </div>
                 <h2 class="text-3xl font-bold mb-5 leading-tight">Kelola tugas Anda</h2>
-                <p class="text-[#AFAFAF] text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Anda dapat dengan mudah mengelola seluruh tugas harian Anda di UpTodo secara gratis</p>
+                <p class="text-uptodo-muted text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Anda dapat dengan mudah mengelola seluruh tugas harian Anda di UpTodo secara gratis</p>
             </div>
 
             <!-- Step 2 Content -->
@@ -46,12 +46,12 @@
                     <img src="{{ asset('images/time2.png') }}" alt="Buat rutinitas" class="w-64 h-64 md:w-80 md:h-80 object-contain" />
                 </div>
                 <div class="flex gap-3 mb-10 items-center justify-center">
-                    <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
+                    <div class="w-6 h-1 bg-uptodo-muted rounded-full"></div>
                     <div class="w-6 h-1 bg-white rounded-full"></div>
-                    <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
+                    <div class="w-6 h-1 bg-uptodo-muted rounded-full"></div>
                 </div>
                 <h2 class="text-3xl font-bold mb-5 leading-tight">Buat rutinitas harian</h2>
-                <p class="text-[#AFAFAF] text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Di UpTodo Anda dapat membuat rutinitas yang disesuaikan untuk tetap produktif</p>
+                <p class="text-uptodo-muted text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Di UpTodo Anda dapat membuat rutinitas yang disesuaikan untuk tetap produktif</p>
             </div>
 
             <!-- Step 3 Content -->
@@ -60,18 +60,18 @@
                     <img src="{{ asset('images/time3.png') }}" alt="Atur tugas" class="w-64 h-64 md:w-80 md:h-80 object-contain" />
                 </div>
                 <div class="flex gap-3 mb-10 items-center justify-center">
-                    <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
-                    <div class="w-6 h-1 bg-[#AFAFAF] rounded-full"></div>
+                    <div class="w-6 h-1 bg-uptodo-muted rounded-full"></div>
+                    <div class="w-6 h-1 bg-uptodo-muted rounded-full"></div>
                     <div class="w-6 h-1 bg-white rounded-full"></div>
                 </div>
                 <h2 class="text-3xl font-bold mb-5 leading-tight">Atur tugas Anda</h2>
-                <p class="text-[#AFAFAF] text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Anda dapat mengatur tugas harian Anda dengan menambahkannya ke kategori terpisah</p>
+                <p class="text-uptodo-muted text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Anda dapat mengatur tugas harian Anda dengan menambahkannya ke kategori terpisah</p>
             </div>
 
             <!-- Step 4 Content (Start Screen) -->
             <div x-show="step === 4" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-8" x-transition:enter-end="opacity-100 translate-y-0" class="absolute inset-0 flex flex-col items-center justify-start text-center mt-6 w-full" x-cloak>
                 <h1 class="text-[32px] md:text-4xl font-bold mb-6 leading-tight">Selamat datang di UpTodo</h1>
-                <p class="text-[#AFAFAF] text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Silakan masuk ke akun Anda atau buat akun baru untuk melanjutkan</p>
+                <p class="text-uptodo-muted text-base md:text-lg px-2 max-w-[320px] md:max-w-md mx-auto leading-relaxed">Silakan masuk ke akun Anda atau buat akun baru untuk melanjutkan</p>
             </div>
         </div>
 

@@ -28,10 +28,10 @@
          x-transition:leave="ease-in duration-200"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 translate-y-full"
-         class="relative w-full sm:max-w-md bg-[#363636] rounded-t-3xl sm:rounded-2xl shadow-xl z-50 transform transition-all modal-slide max-h-[90vh] overflow-y-auto"
+         class="relative w-full sm:max-w-md bg-uptodo-surface2 rounded-t-3xl sm:rounded-2xl shadow-xl z-50 transform transition-all modal-slide max-h-[90vh] overflow-y-auto"
     >
         @if($title)
-            <div class="px-6 py-4 flex justify-between items-center border-b border-[#3E3E3E]">
+            <div class="px-6 py-4 flex justify-between items-center border-b border-uptodo-border">
                 <h3 class="text-lg font-bold text-white">{{ $title }}</h3>
                 <button type="button" x-on:click="show = false" class="text-gray-400 hover:text-white transition">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -19,11 +19,13 @@ class Task extends Model
         'due_datetime',
         'priority',
         'is_completed',
+        'deadline',
     ];
 
     protected $casts = [
         'due_datetime' => 'datetime',
         'is_completed' => 'boolean',
+        'deadline' => 'datetime',
     ];
 
     public function user(): BelongsTo

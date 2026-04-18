@@ -5,19 +5,19 @@
         <!-- Avatar Section -->
         <div class="mb-4 md:mb-8">
             <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=random&size=128" 
-                 alt="User Avatar" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full border-4 border-[#363636] object-cover mb-4 md:mb-6 hover:scale-105 transition-transform cursor-pointer">
+                 alt="User Avatar" class="w-24 h-24 md:w-32 md:h-32 mx-auto rounded-full border-4 border-uptodo-surface2 object-cover mb-4 md:mb-6 hover:scale-105 transition-transform cursor-pointer">
             <h2 class="text-xl md:text-3xl font-bold">{{ auth()->user()->name }}</h2>
-            <p class="text-[#AFAFAF] text-sm md:text-base mt-1 md:mt-2">{{ auth()->user()->email }}</p>
+            <p class="text-uptodo-muted text-sm md:text-base mt-1 md:mt-2">{{ auth()->user()->email }}</p>
         </div>
 
         <div class="grid grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-12 max-w-2xl mx-auto">
-            <div class="bg-[#363636] p-4 md:p-8 rounded-lg md:rounded-xl hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg">
-                <span class="text-[#8875FF] text-xl md:text-4xl font-bold">{{ auth()->user()->tasks()->where('is_completed', false)->count() }}</span>
-                <p class="text-[#AFAFAF] text-xs md:text-base mt-1 md:mt-2">Tugas tersisa</p>
+            <div class="bg-uptodo-surface2 p-4 md:p-8 rounded-lg md:rounded-xl hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                <span class="text-uptodo-purple text-xl md:text-4xl font-bold">{{ auth()->user()->tasks()->where('is_completed', false)->count() }}</span>
+                <p class="text-uptodo-muted text-xs md:text-base mt-1 md:mt-2">Tugas tersisa</p>
             </div>
-            <div class="bg-[#363636] p-4 md:p-8 rounded-lg md:rounded-xl hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg">
-                <span class="text-[#8875FF] text-xl md:text-4xl font-bold">{{ auth()->user()->tasks()->where('is_completed', true)->count() }}</span>
-                <p class="text-[#AFAFAF] text-xs md:text-base mt-1 md:mt-2">Tugas selesai</p>
+            <div class="bg-uptodo-surface2 p-4 md:p-8 rounded-lg md:rounded-xl hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg">
+                <span class="text-uptodo-purple text-xl md:text-4xl font-bold">{{ auth()->user()->tasks()->where('is_completed', true)->count() }}</span>
+                <p class="text-uptodo-muted text-xs md:text-base mt-1 md:mt-2">Tugas selesai</p>
             </div>
         </div>
 

@@ -18,7 +18,7 @@
                     <path d="M75.6667 94.5834H113.5V104.042H75.6667V94.5834ZM75.6667 122.958H151.333V132.417H75.6667V122.958ZM75.6667 151.333H132.417V160.792H75.6667V151.333Z" fill="#AFAFAF"/>
                 </svg>
                 <h2 class="text-xl md:text-3xl font-medium mb-3 text-white">Apa yang ingin Anda lakukan hari ini?</h2>
-                <p class="text-base md:text-xl text-[#AFAFAF]">Ketuk + untuk menambahkan tugas</p>
+                <p class="text-base md:text-xl text-uptodo-muted">Ketuk + untuk menambahkan tugas</p>
             </div>
         @else
             <!-- Search Bar -->
@@ -29,20 +29,20 @@
                     </svg>
                 </div>
                 <input type="text" name="search" value="{{ request('search') }}"
-                       class="block w-full pl-10 md:pl-16 pr-3 py-2 md:py-4 md:text-lg border border-[#979797] rounded-md md:rounded-lg leading-5 bg-[#1D1D1D] text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-[#272727] focus:ring-2 focus:ring-[#8875FF] focus:border-[#8875FF] transition-all duration-150 ease-in-out"
+                       class="block w-full pl-10 md:pl-16 pr-3 py-2 md:py-4 md:text-lg border border-[#979797] rounded-md md:rounded-lg leading-5 bg-uptodo-bg text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-uptodo-surface focus:ring-2 focus:ring-uptodo-purple focus:border-uptodo-purple transition-all duration-150 ease-in-out"
                        placeholder="Cari tugas Anda...">
             </form>
 
             @if(request('search'))
                 <div class="mb-4 text-sm flex justify-between items-center text-gray-400">
                     <span>Hasil pencarian untuk "{{ request('search') }}"</span>
-                    <a href="{{ route('tasks.index') }}" class="text-[#8875FF] hover:underline">Hapus</a>
+                    <a href="{{ route('tasks.index') }}" class="text-uptodo-purple hover:underline">Hapus</a>
                 </div>
             @endif
 
             <!-- Today's Tasks Dropdown -->
             <div x-data="{ expandedToday: true }" class="mb-6">
-                <button @click="expandedToday = !expandedToday" class="flex items-center gap-2 px-3 py-1 md:px-5 md:py-2 md:text-base bg-[#272727] rounded md:rounded-lg text-sm text-gray-300 mb-4 transition-colors hover:bg-[#363636] hover:text-white">
+                <button @click="expandedToday = !expandedToday" class="flex items-center gap-2 px-3 py-1 md:px-5 md:py-2 md:text-base bg-uptodo-surface rounded md:rounded-lg text-sm text-gray-300 mb-4 transition-colors hover:bg-uptodo-surface2 hover:text-white">
                     Hari Ini 
                     <svg x-show="expandedToday" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     <svg x-show="!expandedToday" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -50,7 +50,7 @@
 
                 <div x-show="expandedToday" x-transition.opacity class="space-y-4">
                     @forelse($todayTasks->where('is_completed', false) as $task)
-                        <div class="bg-[#363636] p-4 md:p-6 rounded-lg md:rounded-xl flex items-start justify-between task-card hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-[#8875FF]/30">
+                        <div class="bg-uptodo-surface2 p-4 md:p-6 rounded-lg md:rounded-xl flex items-start justify-between task-card hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-uptodo-purple/30">
                             <div class="flex items-center gap-3 md:gap-5 w-full">
                                 <form method="POST" action="{{ route('tasks.toggle', $task) }}" class="m-0 p-0 flex items-center">
                                     <input type="checkbox" class="task-check w-6 h-6 md:w-8 md:h-8 cursor-pointer" onChange="this.form.submit()" {{ $task->is_completed ? 'checked' : '' }}>
@@ -58,35 +58,41 @@
                                 <div class="flex-1 cursor-pointer" onclick="window.location='{{ route('tasks.show', $task) }}'">
                                     <h3 class="text-white text-base md:text-xl {{ $task->is_completed ? 'line-through text-gray-400' : '' }} font-medium">{{ $task->title }}</h3>
                                     <div class="flex items-center justify-between mt-2 flex-wrap gap-2 md:mt-3">
-                                        <p class="text-xs md:text-sm text-[#AFAFAF]">
+                                        <p class="text-xs md:text-sm text-uptodo-muted">
                                             @if($task->due_datetime)
                                                 Hari ini Pukul {{ $task->due_datetime->format('H:i') }}
                                             @endif
                                         </p>
+                                        @if($task->deadline)
+                                            <p class="text-xs md:text-sm {{ $task->deadline->isPast() && !$task->is_completed ? 'text-red-400 font-bold' : 'text-uptodo-muted' }} flex items-center gap-1">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+                                                Deadline: {{ $task->deadline->format('d M, H:i') }}
+                                            </p>
+                                        @endif
                                         <div class="flex items-center gap-2">
                                             @if($task->category)
                                                 <div class="px-2 py-1 md:px-3 md:py-1.5 flex items-center gap-1 rounded md:rounded-md text-xs md:text-sm text-white" style="background-color: {{ $task->category->color }}">
-                                                    <span>{{ $task->category->icon }}</span>
+                                                    <span><x-icon name="{{ $task->category->icon }}" class="w-4 h-4 md:w-5 md:h-5 text-current inline-block" /></span>
                                                     <span>{{ $task->category->name }}</span>
                                                 </div>
                                             @endif
                                             @if($task->priority)
-                                                <div class="flex items-center justify-center border border-[#8875FF] text-[#8875FF] rounded md:rounded-md px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm gap-1 priority-flag">
+                                                <div class="flex items-center justify-center border rounded md:rounded-md px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm gap-1 priority-flag {{ $task->priority == 1 ? 'border-red-500 text-red-500 bg-red-400/10' : ($task->priority == 2 ? 'border-yellow-500 text-yellow-500 bg-yellow-400/10' : 'border-green-500 text-green-500 bg-green-400/10') }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" md:width="20" md:height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" x2="4" y1="22" y2="15"/></svg>
-                                                    {{ $task->priority }}
+                                                    {{ $task->priority == 1 ? 'Tinggi' : ($task->priority == 2 ? 'Sedang' : 'Rendah') }}
                                                 </div>
                                             @endif
                                         </div>
                                     </div>
                                     
                                     @if($task->subTasks->count() > 0)
-                                        <div class="mt-3 space-y-2 border-l-2 border-[#8875FF]/50 pl-3 py-1 cursor-default" onclick="event.stopPropagation();">
+                                        <div class="mt-3 space-y-2 border-l-2 border-uptodo-purple/50 pl-3 py-1 cursor-default" onclick="event.stopPropagation();">
                                             @foreach($task->subTasks as $subTask)
                                                 <div class="flex items-center gap-2 hover:bg-[#4a4a4a] rounded px-2 py-1 -ml-2 transition-colors">
                                                     <form method="POST" action="{{ route('sub_tasks.toggle', $subTask) }}" class="m-0 p-0 flex items-center">
                                                         <input type="checkbox" class="task-check w-4 h-4 md:w-5 md:h-5 cursor-pointer" onChange="this.form.submit()" {{ $subTask->is_completed ? 'checked' : '' }}>
                                                     </form>
-                                                    <span class="text-xs md:text-sm {{ $subTask->is_completed ? 'line-through text-[#AFAFAF]' : 'text-gray-300' }}">{{ $subTask->title }}</span>
+                                                    <span class="text-xs md:text-sm {{ $subTask->is_completed ? 'line-through text-uptodo-muted' : 'text-gray-300' }}">{{ $subTask->title }}</span>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -102,7 +108,7 @@
 
             <!-- Completed Tasks Dropdown -->
             <div x-data="{ expandedCompleted: true }" class="mb-6">
-                <button @click="expandedCompleted = !expandedCompleted" class="flex items-center gap-2 px-3 py-1 md:px-5 md:py-2 md:text-base bg-[#272727] rounded md:rounded-lg text-sm text-gray-300 mb-4 transition-colors hover:bg-[#363636] hover:text-white">
+                <button @click="expandedCompleted = !expandedCompleted" class="flex items-center gap-2 px-3 py-1 md:px-5 md:py-2 md:text-base bg-uptodo-surface rounded md:rounded-lg text-sm text-gray-300 mb-4 transition-colors hover:bg-uptodo-surface2 hover:text-white">
                     Selesai
                     <svg x-show="expandedCompleted" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     <svg x-show="!expandedCompleted" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
@@ -110,20 +116,26 @@
 
                 <div x-show="expandedCompleted" x-transition.opacity class="space-y-4 opacity-75">
                     @forelse($completedTasks as $task)
-                        <div class="bg-[#363636] p-4 md:p-6 rounded-lg md:rounded-xl flex items-start justify-between task-card hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-[#8875FF]/30">
+                        <div class="bg-uptodo-surface2 p-4 md:p-6 rounded-lg md:rounded-xl flex items-start justify-between task-card hover:bg-[#4a4a4a] transition-all transform hover:-translate-y-1 hover:shadow-lg border border-transparent hover:border-uptodo-purple/30">
                             <div class="flex items-center gap-3 md:gap-5 w-full">
                                 <form method="POST" action="{{ route('tasks.toggle', $task) }}" class="m-0 p-0 flex items-center">
                                     @csrf
                                     <input type="checkbox" class="task-check w-6 h-6 md:w-8 md:h-8 cursor-pointer" onChange="this.form.submit()" checked>
                                 </form>
                                 <div class="flex-1 cursor-pointer" onclick="window.location='{{ route('tasks.show', $task) }}'">
-                                    <h3 class="text-[#AFAFAF] text-base md:text-xl line-through font-medium">{{ $task->title }}</h3>
+                                    <h3 class="text-uptodo-muted text-base md:text-xl line-through font-medium">{{ $task->title }}</h3>
                                     <div class="flex items-center gap-2 mt-2 md:mt-3">
-                                        <p class="text-xs md:text-sm text-[#AFAFAF]">
+                                        <p class="text-xs md:text-sm text-uptodo-muted">
                                             @if($task->due_datetime)
                                                 {{ $task->due_datetime->format('M d') }} Pukul {{ $task->due_datetime->format('H:i') }}
                                             @endif
                                         </p>
+                                        @if($task->deadline)
+                                            <p class="text-xs md:text-sm text-uptodo-muted flex items-center gap-1 opacity-60">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
+                                                Deadline: {{ $task->deadline->format('d M, H:i') }}
+                                            </p>
+                                        @endif
                                     </div>
                                     
                                     @if($task->subTasks->count() > 0)
@@ -134,7 +146,7 @@
                                                         @csrf
                                                         <input type="checkbox" class="task-check w-4 h-4 md:w-5 md:h-5 cursor-pointer" onChange="this.form.submit()" checked>
                                                     </form>
-                                                    <span class="text-xs md:text-sm line-through text-[#AFAFAF]">{{ $subTask->title }}</span>
+                                                    <span class="text-xs md:text-sm line-through text-uptodo-muted">{{ $subTask->title }}</span>
                                                 </div>
                                             @endforeach
                                         </div>

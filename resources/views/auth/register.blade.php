@@ -27,7 +27,7 @@
             <div>
                 <label for="name" class="block text-sm font-medium text-white mb-2">Full Name</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus
-                       class="w-full bg-[#1D1D1D] border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#8875FF] transition-colors"
+                       class="w-full bg-uptodo-bg border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-uptodo-purple transition-colors"
                        placeholder="Enter your name">
             </div>
 
@@ -35,7 +35,7 @@
             <div>
                 <label for="email" class="block text-sm font-medium text-white mb-2">Username or Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required
-                       class="w-full bg-[#1D1D1D] border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#8875FF] transition-colors"
+                       class="w-full bg-uptodo-bg border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-uptodo-purple transition-colors"
                        placeholder="Enter your email">
             </div>
 
@@ -43,7 +43,7 @@
             <div>
                 <label for="password" class="block text-sm font-medium text-white mb-2">Password</label>
                 <input id="password" type="password" name="password" required
-                       class="w-full bg-[#1D1D1D] border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#8875FF] transition-colors"
+                       class="w-full bg-uptodo-bg border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-uptodo-purple transition-colors"
                        placeholder="• • • • • • • • • • • •">
             </div>
 
@@ -51,19 +51,19 @@
             <div>
                 <label for="password_confirmation" class="block text-sm font-medium text-white mb-2">Confirm Password</label>
                 <input id="password_confirmation" type="password" name="password_confirmation" required
-                       class="w-full bg-[#1D1D1D] border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#8875FF] transition-colors"
+                       class="w-full bg-uptodo-bg border border-[#979797] rounded flex px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-uptodo-purple transition-colors"
                        placeholder="• • • • • • • • • • • •">
             </div>
 
             <div class="pt-8">
-                <button type="submit" class="w-full bg-[#8875FF] hover:bg-[#6B5CE7] text-white font-medium py-3 rounded transition-colors focus:ring-4 focus:ring-[#8875FF]/30">
+                <button type="submit" class="w-full bg-uptodo-purple hover:bg-uptodo-purple-dark text-white font-medium py-3 rounded transition-colors focus:ring-4 focus:ring-uptodo-purple/30">
                     Register
                 </button>
             </div>
         </form>
 
         <div class="mt-8 relative flex items-center justify-center">
-            <span class="absolute px-2 bg-[#1D1D1D] text-[#979797] text-sm">or</span>
+            <span class="absolute px-2 bg-uptodo-bg text-[#979797] text-sm">or</span>
             <div class="w-full h-px bg-[#979797]"></div>
         </div>
 

@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="bg-[#1D1D1D] text-white antialiased min-h-screen">
+<body class="bg-uptodo-bg text-white antialiased min-h-screen">
     <!-- Responsive Web App Container -->
     <div class="w-full min-h-screen flex flex-col relative overflow-hidden">
         <!-- Main Content Slot -->

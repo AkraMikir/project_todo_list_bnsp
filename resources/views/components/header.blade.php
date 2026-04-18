@@ -1,6 +1,6 @@
 @props(['title' => ''])
 
-<header class="w-full px-6 py-6 flex items-center justify-between sticky top-0 z-10 bg-[#1D1D1D]/90 backdrop-blur-sm">
+<header class="w-full px-6 py-6 flex items-center justify-between sticky top-0 z-10 bg-uptodo-bg/90 backdrop-blur-sm">
     <!-- Left Action (Optional Back Button or empty space to center title) -->
     <div class="w-8">
         @if(isset($left))
@@ -21,7 +21,7 @@
             {{ $right }}
         @else
             <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'User') }}&background=random" 
-                 alt="User Avatar" class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 hover:scale-110 cursor-pointer hover:ring-2 hover:ring-[#8875FF] transition-all rounded-full border border-[#3E3E3E]">
+                 alt="User Avatar" class="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 hover:scale-110 cursor-pointer hover:ring-2 hover:ring-uptodo-purple transition-all rounded-full border border-uptodo-border">
         @endif
     </div>
 </header>
