@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --color-uptodo-bg: #1D1D1D;
+    --color-uptodo-surface: #272727;
+    --color-uptodo-surface2: #363636;
+    --color-uptodo-purple: #8875FF;
+    --color-uptodo-purple-dark: #6B5CE7;
+    --color-uptodo-text: #FFFFFF;
+    --color-uptodo-muted: #AFAFAF;
+    --color-uptodo-border: #3E3E3E;
+}
+
+[x-cloak] { display: none !important; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #1D1D1D; }
+::-webkit-scrollbar-thumb { background: #8875FF; border-radius: 4px; }
+
+/* Priority flag colors */
+.priority-flag { display: inline-flex; align-items: center; justify-content: center; }
+
+/* Task card animations */
+.task-card { transition: all 0.2s ease; }
+.task-card:hover { transform: translateY(-1px); }
+
+/* Bottom bar active indicator */
+.nav-item.active svg { color: #8875FF; }
+.nav-item.active span { color: #8875FF; }
+
+/* Modal slide up */
+.modal-slide {
+    animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Checkbox custom */
+input[type="checkbox"].task-check {
+    appearance: none;
+    border: 2px solid #AFAFAF;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+input[type="checkbox"].task-check:checked {
+    background-color: #8875FF;
+    border-color: #8875FF;
+}
+input[type="checkbox"].task-check:checked::after {
+    content: '✓';
+    position: absolute;
+    color: white;
+    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
