@@ -1,124 +1,124 @@
 # UpTodo - Dokumentasi Proyek
 
-UpTodo adalah aplikasi manajemen tugas (*todo list*) berbasis web yang dirancang untuk layar *mobile-first*. Aplikasi ini memungkinkan pengguna untuk membuat, mengelola, dan melacak tugas harian mereka dengan antarmuka yang modern dan mudah digunakan.
+1. Gambaran Umum (Overview)
 
----
+Nama Proyek: UpTodo
 
-## 🔥 Fitur Utama
-1. **Autentikasi Pengguna**: Login, registrasi, dan perlindungan halaman khusus pengguna yang sudah *login* (*Session/Middleware*).
-2. **Manajemen Tugas (Task Management)**:
-   - Membuat tugas baru dengan batas waktu waktu (*due date* dan *time*).
-   - Menandai tugas sebagai selesai atau belum selesai (*toggle complete*).
-   - Mengedit dan menghapus tugas.
-3. **Sub-Tugas (Sub-Tasks)**:
-   - Memecah tugas utama menjadi beberapa sub-tugas yang lebih kecil.
-   - Menandai setiap sub-tugas secara individual.
-4. **Kategori Tugas**:
-   - Kategorisasi tugas (misalnya: *Work*, *Personal*, *Study*) yang dikelola untuk masing-masing pengguna.
-   - Warna kategori agar mudah dibedakan secara visual.
-5. **Kalender (Calendar View)**:
-   - Menampilkan tugas-tugas dalam format jadwal/kalender untuk melacak apa yang harus dilakukan pada hari tertentu.
-6. **Profil Pengguna**:
-   - Menampilkan statistik tugas pengguna dan pengaturan (opsional).
-7. **Antarmuka Mobile-First**: 
-   - UI yang dirancang seolah-olah menggunakan aplikasi *native app* di *smartphone* (Responsive dan interaktif).
+Deskripsi Singkat:
+UpTodo adalah aplikasi manajemen tugas (todo list) berbasis web dengan desain yang dioptimalkan untuk perangkat seluler (mobile-first). Aplikasi ini membantu pengguna untuk mencatat, mengelola tingkat prioritas tugas, mengkategorikan pekerjaan, memisahkan tugas utama menjadi sub-tugas kecil, serta melihat jadwal harian melalui fitur kalender yang interaktif.
 
----
+Tech Stack:
+- Backend Framework: Laravel 13
+- Bahasa Pemrograman: PHP 8.3+
+- Frontend / View: Laravel Blade Template, TailwindCSS v4
+- Interaktivitas: Alpine.js (untuk state sisi klien, modal, dropdown)
+- Asset Bundler: Vite
+- Database: SQLite (Default) atau MySQL 8.x
 
-## 🛠️ Sistem dan Teknologi Pendukung
-Proyek ini dikembangkan menggunakan tumpukan teknologi modern:
-- **Backend Framework**: Laravel (PHP)
-- **Frontend / View Engine**: Laravel Blade Templating
-- **Styling**: Tailwind CSS (Utility-first CSS framework untuk mendesain secara cepat dan responsif)
-- **Interaktivitas (Javascript)**: Alpine.js (Digunakan untuk interaktivitas komponen seperti *modal*, *dropdown*, *tabs*, dan peralihan *state* di sisi klien)
-- **Database**: MySQL / SQLite (Sesuai dengan konfigurasi `.env`)
 
----
+2. Persyaratan Sistem (Prerequisites)
 
-## 🗄️ Database Schema & Models
+Sebelum dapat menginstal dan menjalankan aplikasi ini, pastikan sistem Anda telah memiliki perangkat lunak berikut:
+- PHP (minimal versi 8.3 atau lebih baru)
+- Composer (untuk mengelola dependensi PHP Laravel)
+- Node.js & NPM (untuk kompiler aset CSS/JS menggunakan Vite)
+- Database (SQLite bawaan, atau MySQL/PostgreSQL jika ingin menggunakan DB manager lain)
+- Git (untuk kloning repositori)
 
-Sistem menggunakan Relational Database dengan struktur model sebagai berikut:
 
-### 1. `User` Model (`users` table)
-Menyimpan data pengguna terdaftar.
-- `id` (Primary Key)
-- `name`
-- `email` (Unique)
-- `password`
-- `remember_token` & *Timestamps*
+ 3. Panduan Instalasi (Local Setup)
 
-### 2. `Category` Model (`categories` table)
-Menyimpan daftar kategori yang bisa dipilih saat membuat tugas.
-- `id` (Primary Key)
-- `user_id` (Foreign Key - Relasi `belongsTo` User)
-- `name` (Nama Kategori, misal: Pekerjaan, Rumah)
-- `color` (Warna label untuk kategori)
-- `icon` (Ikon/gambar representasi kategori)
-- *Timestamps*
+Berikut adalah langkah demi langkah untuk mulai menjalankan aplikasi di mesin lokal (localhost):
 
-### 3. `Task` Model (`tasks` table)
-Tabel utama untuk menyimpan *todo-list* atau tugas harian.
-- `id` (Primary Key)
-- `user_id` (Foreign Key - Relasi `belongsTo` User)
-- `category_id` (Foreign Key - Relasi `belongsTo` Category, Nullable)
-- `title` (Judul Tugas)
-- `description` (Deskripsi opsional)
-- `task_date` (Tanggal tugas)
-- `task_time` (Waktu tugas)
-- `priority` (Tingkat urgensi, misal 1 - 10)
-- `is_completed` (Boolean - Selesai/Belum)
-- *Timestamps*
+Langkah 1: Clone repositori proyek
+git clone https://github.com/AkraMikir/project_todo_list_bnsp.git
 
-### 4. `SubTask` Model (`sub_tasks` table)
-Tabel untuk tugas-tugas kecil bagian dari `Task` utama.
-- `id` (Primary Key)
-- `task_id` (Foreign Key - Relasi `belongsTo` Task)
-- `title` (Nama sub-tugas)
-- `is_completed` (Boolean)
-- *Timestamps*
+Langkah 2: Masuk ke folder proyek
+cd project_todo_list_bnsp
 
-*Seluruh skema dibuat via fitur **Laravel Migrations**.*
+Langkah 3: Instal dependensi PHP (Laravel) composer install
 
----
+Langkah 4: Instal dependensi Node (Tailwind & Vite) npm install
 
-## 💻 Tampilan (Views)
-File tampilan menggunakan ekstensi `.blade.php` dan terorganisir di dalam folder `resources/views/`:
+Langkah 5: Salin file environment cp .env.example .env
 
-1. **`welcome.blade.php`**: Beranda aplikasi (*landing page*) / *Splash Screen & Onboarding step* (Perkenalan fitur aplikasi ke user baru).
-2. **`auth/`**: Tampilan halaman pendaftaran (`register.blade.php`) dan login (`login.blade.php`).
-3. **`tasks/`**: Menampung komponen layar utama (Beranda Tugas), pembuatan, dan detail tugas.
-4. **`calendar/`**: Tampilan layar penjadwalan / *Calendar view*.
-5. **`categories/`**: Tampilan manajemen kategori.
-6. **`profile/`**: Tampilan profil pengguna.
-7. **`components/`** & **`partials/`**: Tampilan komponen *reusable* (seperti Navbar bawahan (*Bottom Navigation*), struktur layout dasar aplikasi/app layout).
+Langkah 6: Buat Application Key Laravel php artisan key:generate
 
----
+Langkah 7: Konfigurasi Database SQLiteJika pada file .env bagian database  menggunakan DB_CONNECTION=sqlite, Laravel akan otomatis membuat file database.sqlite jika belum ada.
 
-## ⚙️ Core Functions (Controllers)
-Logika *backend* aplikasi direpresentasikan dalam bentuk kontroler yang menangani alur *Request - Response*, dipetakan dari `routes/web.php`.
+Langkah 8: Jalankan Migrasi dan Seeder(Perintah ini akan membuat struktur tabel database dan mengisi data awal seperti kategori default)
+php artisan migrate --seed
 
-### 1. `AuthController`
-Menangani otentikasi.
-- `showLogin()` / `showRegister()`: Menampilkan *form*.
-- `login()`: Memvalidasi kredensial pengguna dan mengamankan *session*.
-- `register()`: Mendaftarkan akun baru ke database.
-- `logout()`: Mengakhiri *session* pengguna.
+Langkah 9: Jalankan Server Lokal
+Anda perlu menjalankan dua perintah terminal ini secara bersamaan.
+Terminal 1 (Menjalankan PHP Server): php artisan serve
+Terminal 2 (Menjalankan Hot-Reload Vite & Tailwind): npm run dev
 
-### 2. `TaskController`
-Resource Controller untuk *Task Utama*.
-- `index()`: Memuat seluruh daftar tugas (bisa difilter berdasarkan yang belum/selesai) untuk halaman *Home*.
-- `store()`: Fungsi untuk menyimpan data *Task* baru (termasuk *date, time, category, priority*).
-- `show()`, `edit()`, `update()`, `destroy()`: Operasi standar (CRUD) atas *Task*.
-- `toggleComplete()`: Fungsi untuk mengubah status *Task* (*checklist*).
-- `calendar()`: Menampilkan *view* dengan grup tugas diurutkan berdasarkan hari/tanggal.
+Aplikasi dapat diakses di http://localhost:8000.
 
-### 3. `SubTaskController`
-- `store()`: Menambahkan sub-tugas baru ke sebuah *Task* (*task_id*).
-- `toggleComplete()`: *Checklist* terpisah untuk anak-tugas.
-- `destroy()`: Hapus sub-tugas.
 
-### 4. `CategoryController`
-- Menangani operasi simpan, ubah, dan hapus *Kategori* yang disesuaikan atau dibuat oleh akun pengguna.
+4. Konfigurasi Khusus (Environment Configuration)
 
----
-*Dokumentasi ini menjelaskan kerangka dasar aplikasi UpTodo berbasis Laravel, dengan pendekatan pengembangan sistem responsif untuk pengalaman pengguna mobile yang efisien.*
+Bagian-bagian file .env yang memerlukan perhatian lebih:
+- DB_CONNECTION=sqlite: Konfigurasi default proyek adalah menggunakan SQLite. Jika Anda ingin menggunakan MySQL, ubah menjadi mysql dan setel variabel DB_DATABASE, DB_USERNAME, DB_PASSWORD dengan kredensial dari phpMyAdmin/MySQL Workbench Anda.
+- APP_URL=http://localhost:8000: Sesuaikan ini jika Anda menggunakan virtual host agar asset URL mereload dengan benar.
+- Layanan Eksternal: Tidak ada API eksternal pihak ketiga (seperti Payment Gateway atau S3) yang dikonfigurasikan di proyek saat ini.
+
+
+5. Struktur Arsitektur & Direktori
+
+Proyek ini mengandalkan struktur MVC bawaan Laravel dengan beberapa penyesuaian:
+- Logika Bisnis (Controllers): Tersimpan di app/Http/Controllers/ (TaskController, SubTaskController, CategoryController, AuthController).
+- Tampilan dan Komponen (Views): Berada di resources/views/. Komponen terpisah seperti UI Navbar, Bottom Navigation, atau icon disatukan ke dalam folder resources/views/components/ dan partials/ untuk konsep reusable view.
+- Logika Frontend: Mengingat proyek ini mobile-first, fungsionalitas UI (modal, tab) dibangun langsung pada file blade masing-masing menggunakan sintaks Alpine.js (x-data, x-show).
+
+
+6. Dokumentasi Database & Relasi
+
+Aplikasi menggunakan skema relasional dengan hubungan entitas sebagai berikut:
+- Users (1) memiliki banyak (N) Categories.
+- Users (1) memiliki banyak (N) Tasks.
+- Categories (1) menaungi banyak (N) Tasks.
+- Tasks (1) memiliki banyak (N) SubTasks.
+
+Rincian Tabel Utama:
+1. users: Tabel pengguna inti (name, email, password).
+2. categories: Kategori pekerjaan (name, color, icon, user_id).
+3. tasks: Tugas yang dikelola (title, description, task_date, task_time, deadline, priority, is_completed, user_id, category_id).
+4. sub_tasks: Tugas turunan (title, is_completed, task_id).
+
+Daftar Seeder (DatabaseSeeder.php):
+Secara otomatis akan mendatangkan CategorySeeder. Ini berfungsi memasukkan data kategori default (misal: "Work", "Personal") sehingga pengguna melihat opsi kategori meskipun belum membuat kategori baru secara custom.
+
+
+7. Dokumentasi API
+
+Karena aplikasi UpTodo dirancang menggunakan arsitektur Monolith (server-side rendering via Blade Template dan web route sessions), tidak ada REST API endpoint publik khusus berbasis JSON yang dikonfigurasi. Segala arus pertukaran data dilayani melalui rute web (routes/web.php) menggunakan Session Middleware.
+
+
+8. Panduan Pengujian (Testing)
+
+Proyek ini dapat diuji menggunakan framework unit test bawaan Laravel (PHPUnit/Pest). Beberapa skenario mungkin telah diikutsertakan di folder tests.
+
+Untuk mengeksekusi semua tes perintahnya adalah:
+php artisan test
+
+
+9. Panduan Deployment
+
+Saat tiba waktu untuk merilis proyek ini ke production server, lakukan langkah-langkah berikut:
+
+- Jalankan asset bundler (Untuk mengompilasi CSS agar berukuran kecil):
+npm run build
+
+- Setup file env production (Ubah di server produksi):
+APP_ENV=production
+APP_DEBUG=false
+
+- Migrasi Database:
+php artisan migrate --force
+
+- Optimasi Laravel (Cache config & routes):
+php artisan optimize
+php artisan view:cache
+php artisan event:cache
